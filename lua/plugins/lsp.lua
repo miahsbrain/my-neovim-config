@@ -205,6 +205,7 @@ return { -- LSP Configuration & Plugins
       graphql = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       cssls = {},
+      -- jdtls = {},
       -- ltex = {},
       -- texlab = {},
     }
