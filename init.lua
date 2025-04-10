@@ -11,6 +11,9 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local media_viewer = require 'plugins.media-opener'
+media_viewer.setup 'xdg-open'
+
 require('lazy').setup {
   require 'plugins.neotree',
   require 'plugins.colortheme',
