@@ -1,4 +1,5 @@
 vim.wo.number = true -- Make line numbers default
+vim.opt.cmdheight = 1 -- or 0 to remove extra black box below lualine
 vim.o.mouse = 'a' -- Enable mouse mode
 vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.o.breakindent = true -- Enable break indent
@@ -27,6 +28,7 @@ vim.o.cursorline = false -- highlight the current line
 vim.o.splitbelow = true -- force all horizontal splits to go below current window
 vim.o.splitright = true -- force all vertical splits to go to the right of current window
 vim.o.swapfile = false -- creates a swapfile
+-- vim.opt.directory = vim.fn.stdpath 'state' .. '/swap//' -- Adds swap file directory
 vim.o.smartindent = true -- make indenting smarter again
 vim.o.showmode = false -- we don't need to see things like -- INSERT -- anymore
 vim.o.showtabline = 2 -- always show tabs

@@ -29,6 +29,7 @@ require('lazy').setup {
   require 'plugins.indent-blankline',
   require 'plugins.misc',
   require 'plugins.harpoon',
+  -- require 'plugins.auto-save',
   --  require 'plugins.nvim-java',
   require 'plugins.jdtls',
 }

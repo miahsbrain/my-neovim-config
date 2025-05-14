@@ -46,7 +46,22 @@ vim.keymap.set('n', '<Right>', ':vertical resize +2<CR>', opts)
 -- Buffers
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', opts)
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', opts)
-vim.keymap.set('n', '<leader>x', ':Bdelete!<CR>', opts)   -- close buffer
+-- Ask for saving for unsaved files
+vim.keymap.set('n', '<leader>x', function()
+  local buf = vim.api.nvim_get_current_buf()
+  if vim.bo[buf].modified then
+    local choice = vim.fn.confirm('Save changes before closing?', '&Yes\n&No\n&Cancel', 2)
+    if choice == 1 then     -- Yes
+      vim.cmd 'w'           -- Save changes
+      vim.cmd 'Bdelete'     -- Delete buffer (keeps swap file)
+    elseif choice == 2 then -- No
+      vim.cmd 'Bdelete!'    -- Force delete (swap file remains for recovery)
+    end
+  else
+    vim.cmd 'Bdelete'                                     -- Delete if no changes
+  end
+end, opts)                                                -- close buffer
+
 vim.keymap.set('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 
 -- Increment/decrement numbers

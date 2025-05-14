@@ -203,8 +203,11 @@ return { -- LSP Configuration & Plugins
       docker_compose_language_service = {},
       tailwindcss = {},
       graphql = {},
-      html = { filetypes = { 'html', 'twig', 'hbs' } },
-      cssls = {},
+      html = { filetypes = { 'html', 'twig', 'hbs', 'jsx', 'tsx' } },
+      typescript_language_server = {}, -- JavaScript / TypeScript
+      cssls = {},                      -- CSS
+      eslint = {},                     -- Linting
+      emmet_ls = {},
       -- jdtls = {},
       -- ltex = {},
       -- texlab = {},
