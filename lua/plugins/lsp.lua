@@ -204,9 +204,52 @@ return { -- LSP Configuration & Plugins
       tailwindcss = {},
       graphql = {},
       html = { filetypes = { 'html', 'twig', 'hbs', 'jsx', 'tsx' } },
-      typescript_language_server = {}, -- JavaScript / TypeScript
-      cssls = {},                      -- CSS
-      eslint = {},                     -- Linting
+      typescript_language_server = {
+        settings = {
+          typescript = {
+            suggest = {
+              autoImports = true,
+            },
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+          javascript = {
+            suggest = {
+              autoImports = true,
+            },
+            inlayHints = {
+              includeInlayParameterNameHints = 'all',
+              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+          completions = {
+            completeFunctionCalls = true,
+          },
+        },
+        init_options = {
+          preferences = {
+            includeInlayParameterNameHints = 'all',
+            includeCompletionsForModuleExports = true,
+            includeCompletionsWithInsertText = true,
+            importModuleSpecifierPreference = 'shortest',
+            allowTextChangesInNewFiles = true,
+          },
+        },
+      }, -- JavaScript / TypeScript
+      cssls = {}, -- CSS
+      eslint = {}, -- Linting
       emmet_ls = {},
       -- jdtls = {},
       -- ltex = {},
