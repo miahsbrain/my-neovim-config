@@ -1,7 +1,7 @@
 vim.wo.number = true -- Make line numbers default
 vim.opt.cmdheight = 1 -- or 0 to remove extra black box below lualine
 vim.o.mouse = 'a' -- Enable mouse mode
-vim.o.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
+vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.o.breakindent = true -- Enable break indent
 vim.o.undofile = true -- Save undo history
 vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search
