@@ -259,6 +259,14 @@ return { -- LSP Configuration & Plugins
       cssls = {}, -- CSS
       eslint = {}, -- Linting
       emmet_ls = {},
+      rust_analyzer = {
+        on_attach = function(client, bufnr)
+          -- Set Rust keyword highlights when LSP attaches
+          vim.api.nvim_set_hl(0, '@keyword.rust', { bg = 'NONE', fg = '#D274F7', bold = true })
+          vim.api.nvim_set_hl(0, '@keyword.modifier.rust', { bg = 'NONE', fg = '#D046FA', bold = true })
+          vim.api.nvim_set_hl(0, '@lsp.type.keyword.rust', { bg = 'NONE', fg = '#D046FA', bold = true })
+        end,
+      },
       -- jdtls = {},
       -- ltex = {},
       -- texlab = {},
