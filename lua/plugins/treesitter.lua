@@ -35,6 +35,7 @@ return {
         'tsx',
         'css',
         'html',
+        'rust'
       },
 
       -- Autoinstall languages that are not installed

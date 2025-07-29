@@ -1,6 +1,7 @@
-require 'core.options'
-require 'core.keymaps'
+require('core.options')
+require('core.keymaps')
 
+-- Bootstrapping Lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -11,25 +12,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local media_viewer = require 'plugins.media-opener'
-media_viewer.setup 'xdg-open'
-
-require('lazy').setup {
-  require 'plugins.neotree',
-  require 'plugins.colortheme',
-  require 'plugins.bufferline',
-  require 'plugins.lualine',
-  require 'plugins.treesitter',
-  require 'plugins.telescope',
-  require 'plugins.lsp',
-  require 'plugins.autocompletion',
-  require 'plugins.autoformatting',
-  require 'plugins.gitsigns',
-  require 'plugins.alpha',
-  require 'plugins.indent-blankline',
-  require 'plugins.misc',
-  require 'plugins.harpoon',
-  -- require 'plugins.auto-save',
-  --  require 'plugins.nvim-java',
-  require 'plugins.jdtls',
-}
+-- Load your plugin config
+require("lazy").setup("plugins")
+-- require("lazy").setup = {
+--     require "plugins.neotree",
+-- }

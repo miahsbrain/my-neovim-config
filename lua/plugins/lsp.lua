@@ -130,7 +130,7 @@ return { -- LSP Configuration & Plugins
               callSnippet = 'Replace',
             },
             telemetry = { enable = false },
-            diagnostics = { disable = { 'missing-fields' } },
+            diagnostics = { disable = { 'missing-fields' }, globals = {"vim"} },
           },
         },
       },
@@ -172,7 +172,7 @@ return { -- LSP Configuration & Plugins
         commands = {
           RuffAutofix = {
             function()
-              vim.lsp.buf.execute_command {
+              vim.lsp.buf.execute {
                 command = 'ruff.applyAutofix',
                 arguments = {
                   { uri = vim.uri_from_bufnr(0) },
@@ -183,7 +183,7 @@ return { -- LSP Configuration & Plugins
           },
           RuffOrganizeImports = {
             function()
-              vim.lsp.buf.execute_command {
+              vim.lsp.buf.execute {
                 command = 'ruff.applyOrganizeImports',
                 arguments = {
                   { uri = vim.uri_from_bufnr(0) },
@@ -204,73 +204,73 @@ return { -- LSP Configuration & Plugins
       tailwindcss = {},
       graphql = {},
       html = { filetypes = { 'html', 'twig', 'hbs', 'jsx', 'tsx' } },
-      typescript_language_server = {
-        settings = {
-          typescript = {
-            suggest = {
-              autoImports = true,
-            },
-            inlayHints = {
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-            },
-            -- format = {
-            --   indentSize = 4,
-            --   indentStyle = 'tab', -- "tab" or "space"
-            -- },
-          },
-          javascript = {
-            suggest = {
-              autoImports = true,
-            },
-            inlayHints = {
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-            },
-          },
-          completions = {
-            completeFunctionCalls = true,
-          },
-          -- format = {
-          --   indentSize = 4,
-          --   indentStyle = 'tab', -- "tab" or "space"
-          -- },
-        },
-        init_options = {
-          preferences = {
-            includeInlayParameterNameHints = 'all',
-            includeCompletionsForModuleExports = true,
-            includeCompletionsWithInsertText = true,
-            importModuleSpecifierPreference = 'shortest',
-            allowTextChangesInNewFiles = true,
-          },
-        },
-      }, -- JavaScript / TypeScript
+      -- typescript_language_server = {
+      --   settings = {
+      --     typescript = {
+      --       suggest = {
+      --         autoImports = true,
+      --       },
+      --       inlayHints = {
+      --         includeInlayParameterNameHints = 'all',
+      --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      --         includeInlayFunctionParameterTypeHints = true,
+      --         includeInlayVariableTypeHints = true,
+      --         includeInlayPropertyDeclarationTypeHints = true,
+      --         includeInlayFunctionLikeReturnTypeHints = true,
+      --         includeInlayEnumMemberValueHints = true,
+      --       },
+      --       -- format = {
+      --       --   indentSize = 4,
+      --       --   indentStyle = 'tab', -- "tab" or "space"
+      --       -- },
+      --     },
+      --     javascript = {
+      --       suggest = {
+      --         autoImports = true,
+      --       },
+      --       inlayHints = {
+      --         includeInlayParameterNameHints = 'all',
+      --         includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      --         includeInlayFunctionParameterTypeHints = true,
+      --         includeInlayVariableTypeHints = true,
+      --         includeInlayPropertyDeclarationTypeHints = true,
+      --         includeInlayFunctionLikeReturnTypeHints = true,
+      --         includeInlayEnumMemberValueHints = true,
+      --       },
+      --     },
+      --     completions = {
+      --       completeFunctionCalls = true,
+      --     },
+      --     -- format = {
+      --     --   indentSize = 4,
+      --     --   indentStyle = 'tab', -- "tab" or "space"
+      --     -- },
+      --   },
+      --   init_options = {
+      --     preferences = {
+      --       includeInlayParameterNameHints = 'all',
+      --       includeCompletionsForModuleExports = true,
+      --       includeCompletionsWithInsertText = true,
+      --       importModuleSpecifierPreference = 'shortest',
+      --       allowTextChangesInNewFiles = true,
+      --     },
+      --   },
+      -- }, -- JavaScript / TypeScript
       cssls = {}, -- CSS
       eslint = {}, -- Linting
       emmet_ls = {},
       rust_analyzer = {
         on_attach = function(client, bufnr)
           -- Set Rust keyword highlights when LSP attaches
-          vim.api.nvim_set_hl(0, '@keyword', { bg = 'NONE', fg = '#FA2F87', bold = true })
-          vim.api.nvim_set_hl(0, '@keyword.rust', { bg = 'NONE', fg = '#D274F7', bold = true })
-          vim.api.nvim_set_hl(0, '@keyword.modifier.rust', { bg = 'NONE', fg = '#D046FA', bold = true })
-          vim.api.nvim_set_hl(0, '@lsp.type.keyword.rust', { bg = 'NONE', fg = '#D046FA', bold = true })
+          -- vim.api.nvim_set_hl(0, '@keyword', { bg = 'NONE', fg = '#FA2F87', bold = true })
+          -- vim.api.nvim_set_hl(0, '@keyword.rust', { bg = 'NONE', fg = '#D274F7', bold = true })
+          -- vim.api.nvim_set_hl(0, '@keyword.modifier.rust', { bg = 'NONE', fg = '#D046FA', bold = true })
+          -- vim.api.nvim_set_hl(0, '@lsp.type.keyword.rust', { bg = 'NONE', fg = '#D046FA', bold = true })
         end,
       },
-      -- jdtls = {},
-      -- ltex = {},
-      -- texlab = {},
+      -- -- jdtls = {},
+      -- -- ltex = {},
+      -- -- texlab = {},
     }
 
     -- Ensure the servers and tools above are installed
@@ -279,22 +279,15 @@ return { -- LSP Configuration & Plugins
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format lua code
-    })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-    require('mason-lspconfig').setup {
-      handlers = {
-        function(server_name)
-          local server = servers[server_name] or {}
-          -- This handles overriding only values explicitly passed
-          -- by the server configuration above. Useful when disabling
-          -- certain features of an LSP (for example, turning off formatting for tsserver)
-          server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-          require('lspconfig')[server_name].setup(server)
-        end,
-      },
-    }
+    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+    require('mason-lspconfig').setup()
+
+    -- Enable the lsps
+    for server, cfg in pairs(servers) do
+        cfg.capabilities = vim.tbl_deep_extend('force', {}, capabilities, cfg.capabilities or {})
+        vim.lsp.config(server, cfg)
+        vim.lsp.enable(server)
+    end
   end,
 }
